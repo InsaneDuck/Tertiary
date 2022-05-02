@@ -4,13 +4,43 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {space :0:400:x}"
-			"$verticalGroup": "par l {space :0:300:x}"
+			"$horizontalGroup": "par l {seq l {space :::p, par l {seq {comp button1:::p:100:p, space :0:0:x}, seq {comp scrollPane1:::p:258:p, space :::p, par l {comp label1::::639:x, seq {comp label2:::p:150:p, space :::p, par l {comp button2:::p:100:p, comp button3:::p:100:p, comp button4:::p:100:p}, space :0:383:x}}}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :::p, par l {seq {comp label1:::p:162:p, space :::p, par l {comp label2:::p:230:p, seq {comp button2:::p:40:p, space :::p, comp button3:::p:40:p, space :::p, comp button4:::p:40:p}}}, comp scrollPane1:::p:491:p}, space :::p, comp button1::::41:x, space :::p}}"
 		} ) {
 			name: "this"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JList" ) {
+					name: "list1"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "text"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "text"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "text"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Play"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button3"
+				"text": "Install"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button4"
+				"text": "Locate"
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 915, 550 )
 		} )
 	}
 }
