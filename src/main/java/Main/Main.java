@@ -2,13 +2,17 @@ package Main;
 
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import json.MetadataProcessor;
+import objects.GameImage;
 import objects.Metadata;
+import settings.Settings;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,12 +40,13 @@ public class Main
         List<Metadata> metadataList = MetadataProcessor.getGamesList();
         gamesList.setListData(metadataList.toArray());
         gamesList.addListSelectionListener(listener -> showInfo());
+        settingsButton.addActionListener(actionEvent -> settings());
     }
 
     public static void main(String[] args)
     {
         FlatOneDarkIJTheme.setup();
-        JFrame frame = new JFrame("Main");
+        JFrame frame = new JFrame("Tertiary");
         frame.setContentPane(new Main().Main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(0, 650));
@@ -50,10 +55,37 @@ public class Main
         frame.setLocationRelativeTo(null);
     }
 
+    private void settings()
+    {
+        Settings settings = new Settings();
+        settings.initialise();
+    }
+
     private void showInfo()
     {
         Metadata metadata = (Metadata) gamesList.getSelectedValue();
-        gameName.setText(metadata.getAppTitle());
+        String name = String.format("<html><div WIDTH=%d>%s</div></html>", 600, metadata.getAppTitle());
+        gameName.setText(name);
+        String url = null;
+        for (GameImage gameImage : metadata.getGameImages())
+        {
+            //DieselGameBoxTall
+            if (Objects.equals(gameImage.getType(), "DieselGameBoxTall"))
+            {
+                url = gameImage.getUrl();
+            }
+        }
+        try
+        {
+            if (url != null)
+            {
+                cover.setIcon(getIconFromWeb(new URL(url)));
+            }
+        }
+        catch (MalformedURLException e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 
     public ImageIcon getIcon(String imageLocation, String type)
@@ -66,7 +98,7 @@ public class Main
                     {
                         case "cover" -> bufferedImage.getScaledInstance(180, 240, Image.SCALE_SMOOTH);
                         case "banner" -> bufferedImage.getScaledInstance(800, 450, Image.SCALE_SMOOTH);
-                        default -> null;
+                        default -> ImageIO.read(new URL(imageLocation));
                     };
             image = new ImageIcon(temp);
         }
@@ -76,5 +108,22 @@ public class Main
         }
         image.getImage().flush();
         return image;
+    }
+
+    public ImageIcon getIconFromWeb(URL url)
+    {
+        ImageIcon imageIcon;
+        try
+        {
+            BufferedImage bufferedImage = ImageIO.read(url);
+            Image image = bufferedImage.getScaledInstance(180, 240, Image.SCALE_SMOOTH);
+            imageIcon = new ImageIcon(image);
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+        imageIcon.getImage().flush();
+        return imageIcon;
     }
 }

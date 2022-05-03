@@ -2,12 +2,12 @@ package json;
 
 import objects.GameImage;
 import objects.Metadata;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,57 +23,48 @@ public class MetadataProcessor
         String directory = "/.config/legendary/metadata";
         File folder = new File(home + directory);
         File[] listOfFiles = folder.listFiles();
-        for (File file : listOfFiles)
+        if (listOfFiles != null)
         {
-            try
+            for (File file : listOfFiles)
             {
-                metadataList.add(jsonToMetadata(new FileReader(file)));
-            }
-            catch (FileNotFoundException e)
-            {
-                throw new RuntimeException(e);
+                metadataList.add(jsonToMetadata(file));
             }
         }
         metadataList.sort(Comparator.comparing(Metadata::getAppTitle));
         return metadataList;
     }
 
-    public static Metadata jsonToMetadata(FileReader jsonFile)
+    public static Metadata jsonToMetadata(File file)
     {
-        //new FileReader("JSONExample.json")
-        // parsing json
-        Object object = null;
+        JSONParser jsonParser = new JSONParser();
+        JSONObject json = null;
         try
         {
-            object = new JSONParser().parse(jsonFile);
+            json = (JSONObject) jsonParser.parse(new FileReader(file));
         }
         catch (IOException | ParseException e)
         {
             throw new RuntimeException(e);
         }
-
-        // typecasting obj to JSONObject
-        JSONObject json = (JSONObject) object;
-
         // getting game name and title
         String appName = (String) json.get("app_name");
         String appTitle = (String) json.get("app_title");
-
+        JSONObject metadata = (JSONObject) json.get("metadata");
         System.out.println(appName);
         System.out.println(appTitle);
 
-        // getting images
         List<GameImage> gameImageList = new ArrayList<>();
-
-//        JSONArray images = (JSONArray) json.get("keyImages");
-//        for (Object o : images)
-//        {
-//            GameImage gameImage = new GameImage();
-//            JSONObject imageJSON = (JSONObject) o;
-//            gameImage.setType((String) imageJSON.get("type"));
-//            gameImage.setUrl((String) imageJSON.get("url"));
-//            gameImageList.add(gameImage);
-//        }
+        // getting images
+        JSONArray images = (JSONArray) metadata.get("keyImages");
+        for (Object image : images)
+        {
+            GameImage gameImage = new GameImage();
+            JSONObject imageJSON = (JSONObject) image;
+            gameImage.setType((String) imageJSON.get("type"));
+            gameImage.setUrl((String) imageJSON.get("url"));
+            System.out.println(gameImage.toString());
+            gameImageList.add(gameImage);
+        }
 
         return new Metadata(appName, appTitle, gameImageList);
     }

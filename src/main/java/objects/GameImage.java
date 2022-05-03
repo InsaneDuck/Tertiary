@@ -24,4 +24,13 @@ public class GameImage
     {
         this.url = url;
     }
+
+    @Override
+    public String toString()
+    {
+        return "GameImage{" +
+                "type='" + type + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }
