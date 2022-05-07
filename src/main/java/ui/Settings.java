@@ -1,23 +1,30 @@
-package settings;
+package ui;
 
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
+import json.UserProcessor;
 
 import javax.swing.*;
+import java.util.Objects;
 
 public class Settings
 {
     private JPanel Settings;
-    private JButton loginSignoutButton;
+    private JButton signoutButton;
     private JList libraryList;
     private JButton button1;
     private JButton button2;
     private JComboBox comboBox1;
     private JButton applyButton;
     private JButton closeButton;
+    private JLabel user;
 
     public Settings()
     {
-
+        if (Objects.equals(UserProcessor.getUser().getName(), "none"))
+        {
+            signoutButton.setText("Login");
+        }
+        user.setText(UserProcessor.getUser().getName());
     }
 
     public void initialise()

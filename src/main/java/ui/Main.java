@@ -1,10 +1,9 @@
-package Main;
+package ui;
 
-import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import json.MetadataProcessor;
 import objects.GameImage;
+import objects.Logic;
 import objects.Metadata;
-import settings.Settings;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,39 +12,44 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 import java.util.Objects;
 
 public class Main
 {
     private JPanel Main;
-    private JTextField searchField;
-    private JList gamesList;
-    private JButton settingsButton;
+    private JTextField searchGames;
+    private JList<Metadata> gamesList;
+    private JButton settings;
+    private JPanel left;
+    private JPanel right;
+    private JLabel gameName;
+    private JButton refresh;
     private JButton playButton;
     private JButton installButton;
     private JButton locateButton;
     private JButton cloudButton;
-    private JPanel left;
-    private JPanel right;
-    private JLabel banner;
-    private JLabel cover;
-    private JLabel gameName;
-    private JButton refreshButton;
+    private JLabel gameCover;
+    private JButton downloads;
+    private JLabel developer;
+    private JLabel appname;
+    private JButton button1;
+    private JButton button2;
+    private JComboBox filterGames;
 
     Main()
     {
-        cover.setIcon(getIcon("/Cover.jpg", "cover"));
+        gameCover.setIcon(getIcon("/Cover.jpg", "cover"));
         //banner.setIcon(getIcon("/Banner.jpg", "banner"));
-        List<Metadata> metadataList = MetadataProcessor.getGamesList();
-        gamesList.setListData(metadataList.toArray());
+        Metadata[] metadataList = MetadataProcessor.getGamesList().toArray(new Metadata[0]);
+        gamesList.setListData(metadataList);
         gamesList.addListSelectionListener(listener -> showInfo());
-        settingsButton.addActionListener(actionEvent -> settings());
+        settings.addActionListener(actionEvent -> settings());
+        installButton.addActionListener(install -> showInstallDialog());
     }
 
     public static void main(String[] args)
     {
-        FlatOneDarkIJTheme.setup();
+        Logic.setConfiguration(Logic.readConfig());
         JFrame frame = new JFrame("Tertiary");
         frame.setContentPane(new Main().Main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,6 +57,11 @@ public class Main
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+    }
+
+    private void showInstallDialog()
+    {
+        InstallDialog.initialise();
     }
 
     private void settings()
@@ -66,6 +75,8 @@ public class Main
         Metadata metadata = (Metadata) gamesList.getSelectedValue();
         String name = String.format("<html><div WIDTH=%d>%s</div></html>", 600, metadata.getAppTitle());
         gameName.setText(name);
+        developer.setText(metadata.getDeveloper());
+        appname.setText(metadata.getAppName());
         String url = null;
         for (GameImage gameImage : metadata.getGameImages())
         {
@@ -79,7 +90,7 @@ public class Main
         {
             if (url != null)
             {
-                cover.setIcon(getIconFromWeb(new URL(url)));
+                gameCover.setIcon(getIconFromWeb(new URL(url)));
             }
         }
         catch (MalformedURLException e)

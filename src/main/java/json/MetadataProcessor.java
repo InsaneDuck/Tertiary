@@ -50,6 +50,7 @@ public class MetadataProcessor
         String appName = (String) json.get("app_name");
         String appTitle = (String) json.get("app_title");
         JSONObject metadata = (JSONObject) json.get("metadata");
+        String developer = (String) metadata.get("developer");
         System.out.println(appName);
         System.out.println(appTitle);
 
@@ -66,7 +67,7 @@ public class MetadataProcessor
             gameImageList.add(gameImage);
         }
 
-        return new Metadata(appName, appTitle, gameImageList);
+        return new Metadata(appName, appTitle, developer, gameImageList);
     }
 
     public void metadataToJSON(Metadata metadata)

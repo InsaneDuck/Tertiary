@@ -6,13 +6,25 @@ public class Metadata
 {
     String appName;
     String appTitle;
+    String developer;
     List<GameImage> gameImages;
 
-    public Metadata(String appName, String appTitle, List<GameImage> gameImages)
+    public Metadata(String appName, String appTitle, String developer, List<GameImage> gameImages)
     {
         this.appName = appName;
         this.appTitle = appTitle;
+        this.developer = developer;
         this.gameImages = gameImages;
+    }
+
+    public String getDeveloper()
+    {
+        return developer;
+    }
+
+    public void setDeveloper(String developer)
+    {
+        this.developer = developer;
     }
 
     public String getAppName()
