@@ -1,9 +1,14 @@
 package ui;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.icons.FlatSearchIcon;
 import json.MetadataProcessor;
+import json.UserProcessor;
+import logic.Command;
+import logic.Logic;
 import objects.GameImage;
-import objects.Logic;
 import objects.Metadata;
+import objects.Variables;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -19,32 +24,50 @@ public class Main
     private JPanel Main;
     private JTextField searchGames;
     private JList<Metadata> gamesList;
-    private JButton settings;
+    private JButton settingsButton;
     private JPanel left;
     private JPanel right;
     private JLabel gameName;
-    private JButton refresh;
+    private JButton refreshButton;
     private JButton playButton;
     private JButton installButton;
     private JButton locateButton;
     private JButton cloudButton;
     private JLabel gameCover;
-    private JButton downloads;
+    private JButton downloadsButton;
     private JLabel developer;
     private JLabel appname;
     private JButton button1;
     private JButton button2;
-    private JComboBox filterGames;
+    private JComboBox<String> filterGames;
+    private JButton backHome;
+    private JList downloadsList;
+    private JPanel downloadsPanel;
+    private JPanel gamesPanel;
+    private JPanel settingsPanel;
+    private JButton github;
+    private JButton logoutButton;
+    private JList libraryList;
+    private JButton button5;
+    private JButton button6;
+    private JButton applyButton;
+    private JButton cancelButton;
+    private JButton button9;
+    private JButton button10;
+    private JButton backHomeSettings;
+    private JButton button3;
+    private JButton button4;
+    private JButton button11;
+    private JButton button12;
+    private JButton button13;
+    private JLabel userName;
+    private JLabel legendary;
+    private JButton updateButton;
+    private JList themesList;
 
     Main()
     {
-        gameCover.setIcon(getIcon("/Cover.jpg", "cover"));
-        //banner.setIcon(getIcon("/Banner.jpg", "banner"));
-        Metadata[] metadataList = MetadataProcessor.getGamesList().toArray(new Metadata[0]);
-        gamesList.setListData(metadataList);
-        gamesList.addListSelectionListener(listener -> showInfo());
-        settings.addActionListener(actionEvent -> settings());
-        installButton.addActionListener(install -> showInstallDialog());
+        initialise();
     }
 
     public static void main(String[] args)
@@ -59,45 +82,49 @@ public class Main
         frame.setLocationRelativeTo(null);
     }
 
-    private void showInstallDialog()
+    private void initialise()
     {
-        InstallDialog.initialise();
+        Metadata[] metadataList = MetadataProcessor.getGamesList().toArray(new Metadata[0]);
+        settingsPanel.setVisible(false);
+        downloadsPanel.setVisible(false);
+        gameCover.setIcon(getIcon("/Cover.jpg", "cover"));
+        filterGames.setModel(new DefaultComboBoxModel<String>(Variables.FILTER_GAMES));
+        gamesList.setListData(metadataList);
+        gamesList.addListSelectionListener(actionEvent -> showInfo());
+        settingsButton.addActionListener(actionEvent -> showSettings());
+        installButton.addActionListener(actionEvent -> showInstallDialog());
+        downloadsButton.addActionListener(actionEvent -> showDownloads());
+        backHome.addActionListener(actionEvent -> showGames());
+        backHomeSettings.addActionListener(actionEvent -> showGames());
+        searchGames.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Search");
+        searchGames.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
+        if (Objects.equals(UserProcessor.getUser().getName(), "none"))
+        {
+            logoutButton.setText("Login");
+        }
+        userName.setText(UserProcessor.getUser().getName());
     }
 
-    private void settings()
+    private void showGames()
     {
-        Settings settings = new Settings();
-        settings.initialise();
+        settingsPanel.setVisible(false);
+        downloadsPanel.setVisible(false);
+        gamesPanel.setVisible(true);
     }
 
-    private void showInfo()
+    private void showSettings()
     {
-        Metadata metadata = (Metadata) gamesList.getSelectedValue();
-        String name = String.format("<html><div WIDTH=%d>%s</div></html>", 600, metadata.getAppTitle());
-        gameName.setText(name);
-        developer.setText(metadata.getDeveloper());
-        appname.setText(metadata.getAppName());
-        String url = null;
-        for (GameImage gameImage : metadata.getGameImages())
-        {
-            //DieselGameBoxTall
-            if (Objects.equals(gameImage.getType(), "DieselGameBoxTall"))
-            {
-                url = gameImage.getUrl();
-            }
-        }
-        try
-        {
-            if (url != null)
-            {
-                gameCover.setIcon(getIconFromWeb(new URL(url)));
-            }
-        }
-        catch (MalformedURLException e)
-        {
-            throw new RuntimeException(e);
-        }
+        legendary.setText(Command.getVersion());
+        settingsPanel.setVisible(true);
+        gamesPanel.setVisible(false);
     }
+
+    private void showDownloads()
+    {
+        gamesPanel.setVisible(false);
+        downloadsPanel.setVisible(true);
+    }
+
 
     public ImageIcon getIcon(String imageLocation, String type)
     {
@@ -121,20 +148,38 @@ public class Main
         return image;
     }
 
-    public ImageIcon getIconFromWeb(URL url)
+    private void showInstallDialog()
     {
-        ImageIcon imageIcon;
+        InstallDialog.initialise();
+    }
+
+    private void showInfo()
+    {
+        Metadata metadata = (Metadata) gamesList.getSelectedValue();
+        String name = String.format("<html><div WIDTH=%d>%s</div></html>", 600, metadata.getAppTitle());
+        gameName.setText(name);
+        developer.setText(metadata.getDeveloper());
+        appname.setText(metadata.getAppName());
+        String url = null;
+        for (GameImage gameImage : metadata.getGameImages())
+        {
+            //DieselGameBoxTall
+            if (Objects.equals(gameImage.getType(), "DieselGameBoxTall"))
+            {
+                url = gameImage.getUrl();
+            }
+        }
         try
         {
-            BufferedImage bufferedImage = ImageIO.read(url);
-            Image image = bufferedImage.getScaledInstance(180, 240, Image.SCALE_SMOOTH);
-            imageIcon = new ImageIcon(image);
+            if (url != null)
+            {
+                gameCover.setIcon(Logic.getIconFromWeb(new URL(url)));
+            }
         }
-        catch (IOException e)
+        catch (MalformedURLException e)
         {
             throw new RuntimeException(e);
         }
-        imageIcon.getImage().flush();
-        return imageIcon;
     }
+    
 }

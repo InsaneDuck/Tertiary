@@ -2,6 +2,7 @@ package json;
 
 import objects.GameImage;
 import objects.Metadata;
+import objects.Variables;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -19,7 +20,7 @@ public class MetadataProcessor
     public static List<Metadata> getGamesList()
     {
         List<Metadata> metadataList = new ArrayList<>();
-        String home = System.getProperty("user.home");
+        String home = Variables.HOME_DIRECTORY;
         String directory = "/.config/legendary/metadata";
         File folder = new File(home + directory);
         File[] listOfFiles = folder.listFiles();
