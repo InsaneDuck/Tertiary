@@ -24,27 +24,23 @@ public class Main
     private JPanel Main;
     private JTextField searchGames;
     private JList<Metadata> gamesList;
-    private JButton settingsButton;
     private JPanel left;
     private JPanel right;
     private JLabel gameName;
-    private JButton refreshButton;
     private JButton playButton;
     private JButton installButton;
     private JButton locateButton;
     private JButton cloudButton;
     private JLabel gameCover;
-    private JButton downloadsButton;
     private JLabel developer;
-    private JLabel appname;
+    private JLabel appName;
     private JButton button1;
     private JButton button2;
     private JComboBox<String> filterGames;
-    private JButton backHome;
     private JList downloadsList;
-    private JPanel downloadsPanel;
-    private JPanel gamesPanel;
-    private JPanel settingsPanel;
+    private JPanel Downloads;
+    private JPanel Library;
+    private JPanel Settings;
     private JButton github;
     private JButton logoutButton;
     private JList libraryList;
@@ -54,7 +50,6 @@ public class Main
     private JButton cancelButton;
     private JButton button9;
     private JButton button10;
-    private JButton backHomeSettings;
     private JButton button3;
     private JButton button4;
     private JButton button11;
@@ -62,12 +57,17 @@ public class Main
     private JButton button13;
     private JLabel userName;
     private JLabel legendary;
-    private JButton updateButton;
+    private JButton checkUpdatesButton;
     private JList themesList;
+    private JTabbedPane Tabs;
+    private JPanel statusBar;
+
 
     Main()
     {
         initialise();
+        playButton.addActionListener(actionEvent -> launchGame());
+        legendary.setText(Command.getVersion());
     }
 
     public static void main(String[] args)
@@ -82,20 +82,24 @@ public class Main
         frame.setLocationRelativeTo(null);
     }
 
+    private void launchGame()
+    {
+
+        Metadata metadata = (Metadata) gamesList.getSelectedValue();
+        Logic.launchGames(metadata);
+
+    }
+
     private void initialise()
     {
         Metadata[] metadataList = MetadataProcessor.getGamesList().toArray(new Metadata[0]);
-        settingsPanel.setVisible(false);
-        downloadsPanel.setVisible(false);
+        Settings.setVisible(false);
+        Downloads.setVisible(false);
         gameCover.setIcon(getIcon("/Cover.jpg", "cover"));
         filterGames.setModel(new DefaultComboBoxModel<String>(Variables.FILTER_GAMES));
         gamesList.setListData(metadataList);
         gamesList.addListSelectionListener(actionEvent -> showInfo());
-        settingsButton.addActionListener(actionEvent -> showSettings());
         installButton.addActionListener(actionEvent -> showInstallDialog());
-        downloadsButton.addActionListener(actionEvent -> showDownloads());
-        backHome.addActionListener(actionEvent -> showGames());
-        backHomeSettings.addActionListener(actionEvent -> showGames());
         searchGames.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Search");
         searchGames.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
         if (Objects.equals(UserProcessor.getUser().getName(), "none"))
@@ -104,27 +108,6 @@ public class Main
         }
         userName.setText(UserProcessor.getUser().getName());
     }
-
-    private void showGames()
-    {
-        settingsPanel.setVisible(false);
-        downloadsPanel.setVisible(false);
-        gamesPanel.setVisible(true);
-    }
-
-    private void showSettings()
-    {
-        legendary.setText(Command.getVersion());
-        settingsPanel.setVisible(true);
-        gamesPanel.setVisible(false);
-    }
-
-    private void showDownloads()
-    {
-        gamesPanel.setVisible(false);
-        downloadsPanel.setVisible(true);
-    }
-
 
     public ImageIcon getIcon(String imageLocation, String type)
     {
@@ -159,7 +142,7 @@ public class Main
         String name = String.format("<html><div WIDTH=%d>%s</div></html>", 600, metadata.getAppTitle());
         gameName.setText(name);
         developer.setText(metadata.getDeveloper());
-        appname.setText(metadata.getAppName());
+        appName.setText(metadata.getAppName());
         String url = null;
         for (GameImage gameImage : metadata.getGameImages())
         {
@@ -181,5 +164,5 @@ public class Main
             throw new RuntimeException(e);
         }
     }
-    
+
 }

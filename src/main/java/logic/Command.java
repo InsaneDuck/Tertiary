@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 import java.util.Scanner;
 
 import static java.rmi.server.LogStream.log;
@@ -23,6 +24,7 @@ public class Command
         {
 
             InputStream inputStream = Runtime.getRuntime().exec(cmd, new String[]{}, new File(Legendary.DIRECTORY)).getInputStream();
+            System.out.println("Executing :" + cmd);
             Scanner s = new Scanner(inputStream).useDelimiter("\\A");
             result = s.hasNext() ? s.next() : null;
         }
@@ -30,7 +32,7 @@ public class Command
         {
             try
             {
-                Runtime.getRuntime().exec(Legendary.PERMISSIONS, new String[]{}, new File(Legendary.DIRECTORY));
+                Runtime.getRuntime().exec(Legendary.FIX_PERMISSIONS, new String[]{}, new File(Legendary.DIRECTORY));
             }
             catch (IOException ex)
             {
@@ -54,25 +56,27 @@ public class Command
         return false;
     }
 
-    public static String execCmd(String cmd)
+    public static void execCmd(String cmd)
     {
-        String result = null;
-        try (InputStream inputStream = Runtime.getRuntime().exec(cmd).getInputStream();
-             Scanner s = new Scanner(inputStream).useDelimiter("\\A"))
+        try
         {
-            result = s.hasNext() ? s.next() : null;
+            Runtime.getRuntime().exec(cmd);
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return result;
     }
 
 
     public static String getVersion()
     {
-        return executeCommand("./legendary --version");
+        String result = executeCommand("./legendary --version");
+        if (Objects.equals(result, ""))
+        {
+            return "legendary not found";
+        }
+        return result;
     }
 
     private void logOutput(InputStream inputStream, String prefix)

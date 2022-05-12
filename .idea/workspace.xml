@@ -9,21 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcaa7ccf-9c58-415f-943a-ecc8137f76c4" name="Changes" comment="setting images to jlabel from web">
-      <change afterPath="$PROJECT_DIR$/src/main/java/logic/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/objects/Legendary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/objects/Variables.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/github.svg" afterDir="false" />
+    <list default="true" id="dcaa7ccf-9c58-415f-943a-ecc8137f76c4" name="Changes" comment="added themes list">
+      <change afterPath="$PROJECT_DIR$/src/main/java/objects/Themes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Tertiary_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Tertiary_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Command.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/json/MetadataProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/json/MetadataProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Legendary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Legendary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Variables.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Main.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Main.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Settings.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Settings.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/legendary" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Settings.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Settings.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,15 +71,15 @@
     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;412&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/satya/IdeaProjects/Tertiary/src/main/resources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/satya/IdeaProjects/Tertiary/target&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
@@ -137,7 +136,22 @@
       <workItem from="1651951346247" duration="646000" />
       <workItem from="1651952218904" duration="3872000" />
       <workItem from="1651957618467" duration="11362000" />
-      <workItem from="1652132074549" duration="3926000" />
+      <workItem from="1652132074549" duration="3958000" />
+      <workItem from="1652166457573" duration="8629000" />
+      <workItem from="1652175972376" duration="46000" />
+      <workItem from="1652176028335" duration="615000" />
+      <workItem from="1652178324867" duration="601000" />
+      <workItem from="1652244127133" duration="815000" />
+      <workItem from="1652245316928" duration="1966000" />
+      <workItem from="1652251377435" duration="232000" />
+      <workItem from="1652251818621" duration="20000" />
+      <workItem from="1652251860927" duration="604000" />
+      <workItem from="1652256328286" duration="2367000" />
+      <workItem from="1652262081930" duration="666000" />
+      <workItem from="1652262807543" duration="421000" />
+      <workItem from="1652268932594" duration="1847000" />
+      <workItem from="1652270793473" duration="2813000" />
+      <workItem from="1652274944082" duration="874000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <created>1651496593218</created>
@@ -160,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651568593710</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added themes list">
+      <created>1652159297396</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1652159297396</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +203,8 @@
     <MESSAGE value="Initial" />
     <MESSAGE value="Main UI" />
     <MESSAGE value="setting images to jlabel from web" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting images to jlabel from web" />
+    <MESSAGE value="added themes list" />
+    <option name="LAST_COMMIT_MESSAGE" value="added themes list" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

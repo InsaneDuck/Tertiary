@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import objects.Configuration;
+import objects.Legendary;
+import objects.Metadata;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -82,6 +84,11 @@ public class Logic
             case "One Dark" -> FlatOneDarkIJTheme.setup();
             case "Dark purple" -> FlatDarkPurpleIJTheme.setup();
         }
+    }
+
+    public static void launchGames(Metadata metadata)
+    {
+        Command.execCmd(Legendary.launch(metadata.getAppName()));
     }
 
     public static ImageIcon getIconFromWeb(URL url)
