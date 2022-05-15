@@ -291,9 +291,14 @@
                     </constraints>
                     <properties/>
                     <border type="none"/>
-                    <children/>
+                    <children>
+                      <component id="1fb9d" class="javax.swing.JList" binding="dlcList">
+                        <constraints/>
+                        <properties/>
+                      </component>
+                    </children>
                   </scrollpane>
-                  <component id="3ae69" class="javax.swing.JButton" binding="button1" default-binding="true">
+                  <component id="3ae69" class="javax.swing.JButton" binding="addDLC">
                     <constraints>
                       <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -301,7 +306,7 @@
                       <text value="+"/>
                     </properties>
                   </component>
-                  <component id="ce59" class="javax.swing.JButton" binding="button2" default-binding="true">
+                  <component id="ce59" class="javax.swing.JButton" binding="removeDLC">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>

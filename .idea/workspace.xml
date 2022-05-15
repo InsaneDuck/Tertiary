@@ -9,20 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcaa7ccf-9c58-415f-943a-ecc8137f76c4" name="Changes" comment="added themes list">
-      <change afterPath="$PROJECT_DIR$/src/main/java/objects/Themes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Tertiary_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Tertiary_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="dcaa7ccf-9c58-415f-943a-ecc8137f76c4" name="Changes" comment="changed UI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Logic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Legendary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Legendary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Variables.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Main.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Main.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Settings.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Settings.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +142,10 @@
       <workItem from="1652268932594" duration="1847000" />
       <workItem from="1652270793473" duration="2813000" />
       <workItem from="1652274944082" duration="874000" />
+      <workItem from="1652346757864" duration="78000" />
+      <workItem from="1652356098428" duration="2329000" />
+      <workItem from="1652438885549" duration="599000" />
+      <workItem from="1652457064672" duration="378000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <created>1651496593218</created>
@@ -181,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652159297396</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changed UI">
+      <created>1652346780439</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1652346780439</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,7 +205,8 @@
     <MESSAGE value="Main UI" />
     <MESSAGE value="setting images to jlabel from web" />
     <MESSAGE value="added themes list" />
-    <option name="LAST_COMMIT_MESSAGE" value="added themes list" />
+    <MESSAGE value="changed UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed UI" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

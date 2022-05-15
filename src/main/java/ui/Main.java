@@ -34,8 +34,8 @@ public class Main
     private JLabel gameCover;
     private JLabel developer;
     private JLabel appName;
-    private JButton button1;
-    private JButton button2;
+    private JButton addDLC;
+    private JButton removeDLC;
     private JComboBox<String> filterGames;
     private JList downloadsList;
     private JPanel Downloads;
@@ -61,6 +61,7 @@ public class Main
     private JList themesList;
     private JTabbedPane Tabs;
     private JPanel statusBar;
+    private JList dlcList;
 
 
     Main()
