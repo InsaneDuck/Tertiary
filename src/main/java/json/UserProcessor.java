@@ -25,7 +25,8 @@ public class UserProcessor
         }
         catch (IOException | ParseException e)
         {
-            throw new RuntimeException(e);
+            //todo returns empty user
+            return user;
         }
         String name = (String) json.get("displayName");
         user.setName(name);

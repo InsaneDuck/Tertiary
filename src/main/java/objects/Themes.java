@@ -10,15 +10,10 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.*;
 
 public class Themes
 {
-    public static final String[] THEMES_LIST = new String[]{"Arc", "Arc - Orange", "Arc Dark", "Arc Dark - Orange",};
+    public static final String[] THEMES_LIST = new String[]{"Arc", "Arc - Orange", "Arc Dark", "Arc Dark - Orange", "Carbon", "Cobalt 2", "Cyan light"};
 
     public static void setTheme(String string)
     {
-        switch (string)
-        {
-            case "Arc" -> FlatOneDarkIJTheme.setup();
-            case "Arcccc" -> FlatAtomOneLightIJTheme.setup();
-        }
         switch (string)
         {
             case "Arc" -> FlatArcIJTheme.setup();

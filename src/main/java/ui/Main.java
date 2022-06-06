@@ -4,17 +4,12 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.FlatSearchIcon;
 import json.MetadataProcessor;
 import json.UserProcessor;
-import logic.Command;
+import legendary.Legendary;
 import logic.Logic;
-import objects.GameImage;
-import objects.Metadata;
-import objects.Variables;
+import objects.*;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
@@ -58,17 +53,20 @@ public class Main
     private JLabel userName;
     private JLabel legendary;
     private JButton checkUpdatesButton;
-    private JList themesList;
+    private JList<String> themesList;
     private JTabbedPane Tabs;
     private JPanel statusBar;
     private JList dlcList;
+    private JPanel debug;
+    private JButton button1;
+    private JTextArea textArea1;
 
 
     Main()
     {
+        uiProperties();
+        listeners();
         initialise();
-        playButton.addActionListener(actionEvent -> launchGame());
-        legendary.setText(Command.getVersion());
     }
 
     public static void main(String[] args)
@@ -83,53 +81,54 @@ public class Main
         frame.setLocationRelativeTo(null);
     }
 
-    private void launchGame()
+    private void uiProperties()
     {
-
-        Metadata metadata = (Metadata) gamesList.getSelectedValue();
-        Logic.launchGames(metadata);
-
+        //setting default icons
+        gameCover.setIcon(Logic.getIcon("/Cover.jpg", "cover"));
+        searchGames.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Search");
+        searchGames.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
+        themesList.setListData(Themes.THEMES_LIST);
     }
 
     private void initialise()
     {
+        //getting list of games
         Metadata[] metadataList = MetadataProcessor.getGamesList().toArray(new Metadata[0]);
-        Settings.setVisible(false);
-        Downloads.setVisible(false);
-        gameCover.setIcon(getIcon("/Cover.jpg", "cover"));
-        filterGames.setModel(new DefaultComboBoxModel<String>(Variables.FILTER_GAMES));
+        //setting filter options
+        filterGames.setModel(new DefaultComboBoxModel<>(Variables.FILTER_GAMES));
+        //setting games list to UI
         gamesList.setListData(metadataList);
-        gamesList.addListSelectionListener(actionEvent -> showInfo());
-        installButton.addActionListener(actionEvent -> showInstallDialog());
-        searchGames.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Search");
-        searchGames.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
+
         if (Objects.equals(UserProcessor.getUser().getName(), "none"))
         {
             logoutButton.setText("Login");
         }
+        //get username and set it in UI
         userName.setText(UserProcessor.getUser().getName());
+        //get legendary installed version
+        legendary.setText(Legendary.getVersion());
     }
 
-    public ImageIcon getIcon(String imageLocation, String type)
+    private void listeners()
     {
-        ImageIcon image = null;
-        try
-        {
-            BufferedImage bufferedImage = ImageIO.read(Objects.requireNonNull(getClass().getResource(imageLocation)));
-            Image temp = switch (type)
-                    {
-                        case "cover" -> bufferedImage.getScaledInstance(180, 240, Image.SCALE_SMOOTH);
-                        case "banner" -> bufferedImage.getScaledInstance(800, 450, Image.SCALE_SMOOTH);
-                        default -> ImageIO.read(new URL(imageLocation));
-                    };
-            image = new ImageIcon(temp);
-        }
-        catch (IOException e)
-        {
-            throw new RuntimeException(e);
-        }
-        image.getImage().flush();
-        return image;
+        gamesList.addListSelectionListener(actionEvent -> showInfo());
+        installButton.addActionListener(actionEvent -> showInstallDialog());
+        playButton.addActionListener(actionEvent -> launchGame());
+        themesList.addListSelectionListener(actionEvent -> changeTheme());
+    }
+
+    private void changeTheme()
+    {
+        Themes.setTheme(themesList.getSelectedValue());
+        Configuration configuration = Logic.readConfig();
+        configuration.setTheme(themesList.getSelectedValue());
+        Logic.updateConfig(configuration);
+    }
+
+    private void launchGame()
+    {
+        Metadata metadata = gamesList.getSelectedValue();
+        Legendary.launch(metadata.getAppName());
     }
 
     private void showInstallDialog()

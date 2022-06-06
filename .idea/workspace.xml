@@ -10,7 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcaa7ccf-9c58-415f-943a-ecc8137f76c4" name="Changes" comment="changed UI">
+      <change afterPath="$PROJECT_DIR$/legendary" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/legendary/Legendary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/UserProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/json/UserProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Legendary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Themes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Themes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Variables.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Main.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Main.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Main.java" afterDir="false" />
     </list>
@@ -58,7 +69,9 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;412&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;245&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/satya/IdeaProjects/Tertiary/target&quot;,
@@ -146,6 +159,14 @@
       <workItem from="1652356098428" duration="2329000" />
       <workItem from="1652438885549" duration="599000" />
       <workItem from="1652457064672" duration="378000" />
+      <workItem from="1652637953291" duration="66000" />
+      <workItem from="1653093244170" duration="627000" />
+      <workItem from="1653093882223" duration="1164000" />
+      <workItem from="1653095120379" duration="4139000" />
+      <workItem from="1653220497856" duration="4402000" />
+      <workItem from="1653224912103" duration="4985000" />
+      <workItem from="1653310834596" duration="580000" />
+      <workItem from="1653650655231" duration="742000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <created>1651496593218</created>

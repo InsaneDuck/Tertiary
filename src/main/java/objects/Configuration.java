@@ -5,6 +5,29 @@ public class Configuration
     String theme;
     String accent;
 
+    boolean loggedIn;
+
+    public Configuration()
+    {
+    }
+
+    public Configuration(String theme, String accent, boolean loggedIn)
+    {
+        this.theme = theme;
+        this.accent = accent;
+        this.loggedIn = loggedIn;
+    }
+
+    public boolean isLoggedIn()
+    {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn)
+    {
+        this.loggedIn = loggedIn;
+    }
+
     public String getTheme()
     {
         return theme;

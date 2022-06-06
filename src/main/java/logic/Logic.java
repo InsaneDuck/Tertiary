@@ -2,11 +2,8 @@ package logic;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
-import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import objects.Configuration;
-import objects.Legendary;
-import objects.Metadata;
+import objects.Themes;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 
 public class Logic
 {
@@ -31,65 +29,51 @@ public class Logic
         }
     }
 
-    public static Configuration jsonToConfiguration(File file)
-    {
-        ObjectMapper objectMapper = new ObjectMapper();
-        Configuration configuration = new Configuration();
-        try
-        {
-            configuration = objectMapper.readValue(file, Configuration.class);
-        }
-        catch (IOException e)
-        {
-            throw new RuntimeException(e);
-        }
-        return configuration;
-    }
-
+    //method that returns configuration if one exists or creates new one if no config exists
     public static Configuration readConfig()
     {
-        Configuration configuration = new Configuration();
+        Configuration configuration = new Configuration("One Dark", "purple", false);
+        ObjectMapper mapper = new ObjectMapper();
         String home = System.getProperty("user.home");
         String directory = "/.config/tertiary/configuration.json";
         File configurationFile = new File(home + directory);
         try
         {
-
+            //if configuration doesn't exist then create one with default config
             if (configurationFile.getParentFile().mkdirs() || configurationFile.createNewFile())
             {
-                configuration.setTheme("One Dark");
-                configuration.setAccent("purple");
-                ObjectMapper mapper = new ObjectMapper();
                 mapper.writeValue(configurationFile, configuration);
             }
+            return mapper.readValue(configurationFile, Configuration.class);
         }
         catch (IOException e)
         {
             throw new RuntimeException(e);
         }
-        configuration = jsonToConfiguration(configurationFile);
-        return configuration;
     }
 
-    public static Configuration getConfiguration()
+    public static void updateConfig(Configuration configuration)
     {
-
-        return new Configuration();
-    }
-
-    public static void setConfiguration(Configuration configuration)
-    {
-        switch (configuration.getTheme())
+        ObjectMapper objectMapper = new ObjectMapper();
+        String home = System.getProperty("user.home");
+        String directory = "/.config/tertiary/configuration.json";
+        File configurationFile = new File(home + directory);
+        try
         {
-            case "One Dark" -> FlatOneDarkIJTheme.setup();
-            case "Dark purple" -> FlatDarkPurpleIJTheme.setup();
+            objectMapper.writeValue(configurationFile, configuration);
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
         }
     }
 
-    public static void launchGames(Metadata metadata)
+
+    public static void setConfiguration(Configuration configuration)
     {
-        Command.execCmd(Legendary.launch(metadata.getAppName()));
+        Themes.setTheme(configuration.getTheme());
     }
+
 
     public static ImageIcon getIconFromWeb(URL url)
     {
@@ -106,5 +90,27 @@ public class Logic
         }
         imageIcon.getImage().flush();
         return imageIcon;
+    }
+
+    public static ImageIcon getIcon(String imageLocation, String type)
+    {
+        ImageIcon image = null;
+        try
+        {
+            BufferedImage bufferedImage = ImageIO.read(Objects.requireNonNull(Logic.class.getResource(imageLocation)));
+            Image temp = switch (type)
+                    {
+                        case "cover" -> bufferedImage.getScaledInstance(180, 240, Image.SCALE_SMOOTH);
+                        case "banner" -> bufferedImage.getScaledInstance(800, 450, Image.SCALE_SMOOTH);
+                        default -> ImageIO.read(new URL(imageLocation));
+                    };
+            image = new ImageIcon(temp);
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+        image.getImage().flush();
+        return image;
     }
 }
