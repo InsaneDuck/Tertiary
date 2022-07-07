@@ -71,6 +71,7 @@ public class Main
 
     public static void main(String[] args)
     {
+        
         Logic.setConfiguration(Logic.readConfig());
         JFrame frame = new JFrame("Tertiary");
         frame.setContentPane(new Main().Main);

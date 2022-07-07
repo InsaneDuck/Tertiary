@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Legendary
@@ -17,9 +16,27 @@ public class Legendary
     public static final String LEGENDARY_DIRECTORY = HOME_DIRECTORY + "/Applications/";
     public static final String FIX_PERMISSIONS = "chmod 755 legendary";
 
+    public static boolean checkForLegendary()
+    {
+        File f = new File(Legendary.LEGENDARY_DIRECTORY + "legendary");
+        return f.exists() && !f.isDirectory();
+    }
+
+    public static String getVersion()
+    {
+        if (checkForLegendary())
+        {
+            return executeCommand("--version");
+        }
+        return "legendary not found";
+    }
+
     public static void downloadSaves()
     {
-        executeCommand("download-saves");
+        if (checkForLegendary())
+        {
+            executeCommand("download-saves");
+        }
     }
 
     public static String install(String appName)
@@ -37,15 +54,6 @@ public class Legendary
         executeCommand("auth");
     }
 
-    public static String getVersion()
-    {
-        String result = executeCommand("--version");
-        if (Objects.equals(result, ""))
-        {
-            return "legendary not found";
-        }
-        return result;
-    }
 
     public static String getGamesList()
     {
@@ -115,9 +123,11 @@ public class Legendary
         //catch legendary not found exception
         catch (IOException e)
         {
-            downloadLegendary();
+            //downloadLegendary();
             e.printStackTrace();
         }
         return result;
     }
+
+
 }

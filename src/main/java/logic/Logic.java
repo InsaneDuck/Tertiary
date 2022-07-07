@@ -29,6 +29,7 @@ public class Logic
         }
     }
 
+
     //method that returns configuration if one exists or creates new one if no config exists
     public static Configuration readConfig()
     {
