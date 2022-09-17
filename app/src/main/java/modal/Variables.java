@@ -1,4 +1,4 @@
-package objects;
+package modal;
 
 // just a class with different variables
 public class Variables

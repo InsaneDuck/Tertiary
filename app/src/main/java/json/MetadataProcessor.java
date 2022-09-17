@@ -1,8 +1,8 @@
 package json;
 
-import objects.GameImage;
-import objects.Metadata;
-import objects.Variables;
+import modal.GameImage;
+import modal.Metadata;
+import modal.Variables;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

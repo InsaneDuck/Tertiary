@@ -1,4 +1,4 @@
-package objects;
+package modal;
 
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatDraculaIJTheme;

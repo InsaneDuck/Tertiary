@@ -2,8 +2,8 @@ package logic;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import objects.Configuration;
-import objects.Themes;
+import modal.Configuration;
+import modal.Themes;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

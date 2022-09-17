@@ -1,6 +1,6 @@
 package json;
 
-import objects.User;
+import modal.User;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
