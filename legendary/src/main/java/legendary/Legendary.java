@@ -18,8 +18,8 @@ public class Legendary
 
     public static boolean checkForLegendary()
     {
-        File f = new File(Legendary.LEGENDARY_DIRECTORY + "legendary");
-        return f.exists() && !f.isDirectory();
+        File file = new File(Legendary.LEGENDARY_DIRECTORY + "legendary");
+        return file.exists() && !file.isDirectory();
     }
 
     public static String getVersion()
@@ -98,9 +98,9 @@ public class Legendary
             FileUtils.copyURLToFile(new URL(LEGENDARY_GITHUB_LINUX), new File(LEGENDARY_DIRECTORY + "legendary"));
             Runtime.getRuntime().exec(Legendary.FIX_PERMISSIONS, new String[]{}, new File(LEGENDARY_DIRECTORY));
         }
-        catch (IOException e)
+        catch (IOException ioException)
         {
-            e.printStackTrace();
+            ioException.printStackTrace();
         }
     }
 
@@ -117,14 +117,14 @@ public class Legendary
         {
             InputStream inputStream = Runtime.getRuntime().exec(cmd, new String[]{}, new File(Legendary.LEGENDARY_DIRECTORY)).getInputStream();
             System.out.println("Executing :" + cmd);
-            Scanner s = new Scanner(inputStream).useDelimiter("\\A");
-            result = s.hasNext() ? s.next() : null;
+            Scanner scanner = new Scanner(inputStream).useDelimiter("\\A");
+            result = scanner.hasNext() ? scanner.next() : null;
         }
         //catch legendary not found exception
-        catch (IOException e)
+        catch (IOException ioException)
         {
             //downloadLegendary();
-            e.printStackTrace();
+            ioException.printStackTrace();
         }
         return result;
     }

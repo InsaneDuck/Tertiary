@@ -9,37 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcaa7ccf-9c58-415f-943a-ecc8137f76c4" name="Changes" comment="changed UI">
-      <change afterPath="$PROJECT_DIR$/app/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/legendary/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="dcaa7ccf-9c58-415f-943a-ecc8137f76c4" name="Changes" comment="separated into modules">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/json/MetadataProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/json/MetadataProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/json/UserProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/json/UserProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/legendary/Legendary.java" beforeDir="false" afterPath="$PROJECT_DIR$/legendary/src/main/java/legendary/Legendary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/logic/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Downloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/logic/Downloader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/logic/Logic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Banner.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/modal/Banner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/modal/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/GameImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/modal/GameImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Metadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/modal/Metadata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Themes.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/modal/Themes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/modal/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/modal/Variables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/InstallDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/view/InstallDialog.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/InstallDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/view/InstallDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Main.form" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/view/Main.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/view/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Splash.form" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/view/Splash.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Splash.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/view/Splash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Banner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/Banner.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Cover.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/Cover.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/github.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/github.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/legendary/src/main/java/legendary/Legendary.java" beforeDir="false" afterPath="$PROJECT_DIR$/legendary/src/main/java/legendary/Legendary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +183,7 @@
       <workItem from="1662814110789" duration="614000" />
       <workItem from="1662867585134" duration="470000" />
       <workItem from="1663419896646" duration="1836000" />
-      <workItem from="1663421754580" duration="1712000" />
+      <workItem from="1663421754580" duration="2782000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <created>1651496593218</created>
@@ -255,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660089391294</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="separated into modules">
+      <created>1663423519304</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1663423519304</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +258,8 @@
     <MESSAGE value="setting images to jlabel from web" />
     <MESSAGE value="added themes list" />
     <MESSAGE value="changed UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed UI" />
+    <MESSAGE value="separated into modules" />
+    <option name="LAST_COMMIT_MESSAGE" value="separated into modules" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
